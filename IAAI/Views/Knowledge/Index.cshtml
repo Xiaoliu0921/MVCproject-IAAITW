@@ -1,0 +1,29 @@
+﻿@model IPagedList<IAAI.Models.Knowledge>
+
+<table class="table table-striped career-table download-table">
+    <thead>
+        <tr>
+            <th>日期</th>
+            <th><span class="text-left">標題</span></th>
+            <th>檔案</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.CreatedTime.ToShortDateString()</td>
+            <td><span class="text-left">@item.FileName</span></td>
+            <td><a href="@item.FilePath" class="btn btn-primary" download="@item.FileName"><i class="fa fa-download" ></i>下載</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div class="pager">
+    <ul class="pagination">
+        @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+    </ul>
+</div>
+
+

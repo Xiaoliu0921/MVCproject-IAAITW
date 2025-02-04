@@ -1,0 +1,236 @@
+﻿@using MvcPaging;
+@model IPagedList<IAAI.Models.Member>
+
+@{
+    // 如果 Session["newsSearch"] 不存在，初始化為預設 ViewModel
+    IAAI.Models.ViewModels.MemberSearchViewModel search = Session["memberSearch"] != null
+        ? Newtonsoft.Json.JsonConvert.DeserializeObject<IAAI.Models.ViewModels.MemberSearchViewModel>(Session["memberSearch"].ToString())
+        : new IAAI.Models.ViewModels.MemberSearchViewModel
+        {
+            OrderBy = "1",
+            EndUpdateDate = DateTime.Today,
+            EndCreateDate = DateTime.Today
+        };
+}
+
+@using (Html.BeginForm("Index", "Members", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="border: 0.5px solid gray; background-color: #FBFBFF">
+
+        <div class="form-group d-flex">
+            <div class="col-md-2 m-t-15">
+                <h4>搜尋：</h4>
+            </div>
+        </div>
+
+        <div class="form-group d-flex" style="height:150px;">
+            <!-- 排序依據 -->
+            <div class="col-md-2" style="height:100%">
+                <br /><br />
+                排序依據：<br />
+                <select class="form-control" name="OrderBy">
+                    <option value="1" @(search.OrderBy == "1" ? "selected" : "")>待審核會員優先排序</option>
+                    <option value="2" @(search.OrderBy == "2" ? "selected" : "")>依會員類別降序排序</option>
+                    <option value="3" @(search.OrderBy == "3" ? "selected" : "")>依會員類別升序排序</option>
+                    <option value="4" @(search.OrderBy == "4" ? "selected" : "")>依創建時間越新越先</option>
+                    <option value="5" @(search.OrderBy == "5" ? "selected" : "")>依創建時間越晚越先</option>
+                    <option value="6" @(search.OrderBy == "6" ? "selected" : "")>依編輯時間越新越先</option>
+                    <option value="7" @(search.OrderBy == "7" ? "selected" : "")>依編輯時間越晚越先</option>
+                </select>
+            </div>
+
+            <!-- 搜尋條件 -->
+            <div class="col-md-2">
+                帳號包含：<br />
+                <input type="text" name="SearchAccount" class="form-control" placeholder="標題文字" value="@search.SearchAccount" />
+                <br />
+                姓名包含：<br />
+                <input type="text" name="SearchName" class="form-control" placeholder="內文文字" value="@search.SearchName" />
+            </div>
+
+            <!-- 會員類別(核取方塊) -->
+            <div class="col-md-2">
+                會員類別：<br />
+                <div class="d-flex flex-wrap">
+                    <div style="width:100%">
+                        @{var isChecked = false;
+                            if (search.MemberType != null)
+                            {
+                                isChecked = search.MemberType.Contains("待審核會員");
+                            }
+                        }
+
+                        <label>
+                            <input type="checkbox" name="MemberType" value="待審核會員" @(isChecked ? "checked" : null) />
+                            待審核會員
+                        </label>
+                    </div>
+                    @foreach (var item in Enum.GetNames(typeof(IAAI.Models.MemberType)))
+                    {
+                        <div style="width:45%;margin-right:5%;">
+                            @{
+                                if (search.MemberType != null)
+                                {
+                                    isChecked = search.MemberType.Contains(item.ToString());
+                                }
+                            }
+                            <label>
+                                <input type="checkbox" name="MemberType" value="@item" @(isChecked ? "checked" : null) />
+                                @item
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!--日期區間-->
+            <div class="col-md-4">
+                編輯日期區間：<br />
+                <div class="d-flex" style="height:35px;">
+                    <input type="date" name="StartUpdateDate" class="form-control" value="@(search.StartUpdateDate?.ToString("yyyy-MM-dd") ?? "")" />
+                    @Html.Label(" ~ ", new { @style = "height:35px;line-height:35px;" })
+                    <input type="date" name="EndUpdateDate" class="form-control" value="@(search.EndUpdateDate?.ToString("yyyy-MM-dd") ?? DateTime.Today.ToString("yyyy-MM-dd"))" />
+                </div>
+                <br />
+                創建日期區間：<br />
+                <div class="d-flex" style="height:35px;">
+                    <input type="date" name="StartCreateDate" class="form-control" value="@(search.StartCreateDate?.ToString("yyyy-MM-dd") ?? "")" />
+                    @Html.Label(" ~ ", new { @style = "height:35px;line-height:35px;" })
+                    <input type="date" name="EndCreateDate" class="form-control" value="@(search.EndCreateDate?.ToString("yyyy - MM - dd") ?? DateTime.Today.ToString("yyyy - MM - dd"))" />
+                </div>
+            </div>
+
+            <!--搜尋按鈕-->
+            <div class="col-md-2 d-flex align-items-center" style="height:100%">
+                <input type="submit" value="搜尋" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().MemberType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Account)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UpdatedTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CreatedTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (string.IsNullOrEmpty(item.MemberType.ToString()))
+                {
+                    @Html.Label("待審核會員")
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.MemberType)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @item.UpdatedTime.ToString("yyyy-MM-dd")
+            </td>
+            <td>
+                @item.CreatedTime.ToString("yyyy-MM-dd")
+            </td>
+            <td>
+                @if (item.IsApproved == false)
+                {
+
+                    @Html.ActionLink("審核", "Details", new { id = item.Id, page = Model.PageNumber }) @Html.Label("|")
+                }
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id, page = Model.PageNumber }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                <a href="#" class="delete-link" data-id="@item.Id" data-toggle="modal" data-target="#deleteModal">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div class="pager">
+    <ul class="pagination">
+        @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+    </ul>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">確認刪除</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @Html.Partial("~/Areas/BackEnd/Views/Shared/_PartialPageDelete.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">錯誤</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @TempData["ErrorMessage"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $('.delete-link').on('click', function() {
+            var itemId = $(this).data('id');
+            deleteUrl = '@Url.Action("Delete", ViewContext.RouteData.Values["controller"].ToString())/' + itemId;
+            $('#deleteForm').attr('action', deleteUrl);
+        });
+
+        $(document).ready(function() {
+            var errorMessage = '@TempData["ErrorMessage"]';
+            if (errorMessage) {
+                $('#errorModal').modal('show');
+            }
+
+            $('.delete-link').on('click', function() {
+                var itemId = $(this).data('id');
+                var deleteUrl = '@Url.Action("Delete", ViewContext.RouteData.Values["controller"].ToString())/' + itemId;
+                $('#deleteForm').attr('action', deleteUrl);
+            });
+        });
+    </script>
+}

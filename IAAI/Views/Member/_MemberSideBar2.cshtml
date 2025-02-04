@@ -1,0 +1,21 @@
+﻿
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+    <div class="sidebar sidebar-right">
+        <div class="widget">
+            <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>會員專區</h2>
+            <ul class="arrow nav nav-tabs nav-stacked">
+                <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                    <a href="@Url.Action("Index","Member")">討論區</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Edit" ? "active" : "")">
+                    <a href="@Url.Action("Edit","Member")">修改個人資料</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Logout" ? "active" : "")">
+                    <a href="@Url.Action("Logout","Member")">登出</a>
+                </li>
+            </ul>
+        </div><!-- Categories end -->
+
+    </div><!-- Sidebar end -->
+</div><!-- Sidebar Col end -->

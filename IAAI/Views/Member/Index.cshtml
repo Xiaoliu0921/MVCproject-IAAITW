@@ -1,0 +1,65 @@
+﻿@model IPagedList<IAAI.Models.ForumPost>
+
+<style>
+    .respon {
+        margin: 20px auto;
+        display: inline-block;
+        padding: 3px 8px;
+        background: #b2b2b2;
+        color: white;
+        border-radius: 2px;
+    }
+</style>
+
+@Html.ActionLink("張貼文章", "Create", "Member", new { page = Model.PageNumber }, new { @class = "respon" })
+
+<table class="table table-striped career-table download-table">
+
+    <thead>
+        <tr>
+
+            <th style="width:40%;"><span class="text-left">標題</span></th>
+            <th>發表人</th>
+            <th>最新回覆人</th>
+            <th>回覆數</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td><span class="text-left"><a href="@Url.Action("Details", "Member", new {id=item.Id,page=Model.PageNumber})">@item.Title</a></span></td>
+                <td>@item.MyMember.Name <br>@item.CreatedTime.ToString("yyyy-MM-dd")</td>
+                <td>
+                    @if (item.MyReplies.Any())
+                    {
+                        @Html.Raw(item.MyReplies.LastOrDefault().MyMember.Name)
+                        @Html.Raw("<br>")
+                        @Html.Raw(item.MyReplies.LastOrDefault().CreatedTime.ToString("yyyy-MM-dd"))
+                    }
+                    else
+                    {
+                        @Html.Raw(item.MyMember.Name)
+                        @Html.Raw("<br>")
+                        @Html.Raw(item.CreatedTime.ToString("yyyy-MM-dd"))
+                    }
+                </td>
+                <td>
+                    @item.MyReplies.Count
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="pager">
+    <ul class="pagination">
+        @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+    </ul>
+</div>
+
+
+
+
+

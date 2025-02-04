@@ -1,0 +1,124 @@
+﻿@model IAAI.Models.ViewModels.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Login-管理系統</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="CodedThemes">
+    <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="CodedThemes">
+    <!-- Favicon icon -->
+    <link rel="icon" href="/BackEndTemplate/assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="/BackEndTemplate/assets/css/bootstrap/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="/BackEndTemplate/assets/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="/BackEndTemplate/assets/icon/icofont/css/icofont.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="/BackEndTemplate/assets/css/style.css">
+</head>
+<body class="fix-menu">
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+
+    <section class="login p-fixed d-flex text-center bg-primary common-img-bg">
+        <!-- Container-fluid starts -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+                    <div class="login-card card-block auth-body mr-auto ml-auto">
+                        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "md-float-material" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="auth-box">
+                                <div class="row m-b-20">
+                                    <div class="col-md-12">
+                                        <h3 class="text-center txt-primary">管理系統登入</h3>
+                                    </div>
+                                </div>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <span style="color:red;">@ViewBag.message</span>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "Account" })
+                                    @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                                    <span class="md-line"></span>
+                                </div>
+
+                                <div class="input-group">
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    <span class="md-line"></span>
+                                </div>
+
+                                <div class="row m-t-30">
+                                    <div class="col-md-12 d-flex justify-content-center align-content-center">
+                                        <button type="submit" style="height:50px;" class="btn btn-primary btn-md waves-effect btn-block text-center m-b-20 m-r-20 m-l-20">登入</button>
+                                        @*<button type="button" style="height:50px;margin-top:0px;" class="btn btn-info btn-md waves-effect btn-block text-center m-b-20 m-r-20 m-l-20">回到首頁</button>*@
+                                        <a href="@Url.Action("Index", "Home",new { area = "" })" style="height:50px;margin-top:0px;" class="btn btn-info btn-md waves-effect btn-block text-center m-b-20 m-r-20 m-l-20">回到首頁</a>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="text-inverse text-right m-b-0">國際縱火調查人員協會網站</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+
+
+
+                        <!-- end of form -->
+                    </div>
+                    <!-- Authentication card end -->
+                </div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid -->
+    </section>
+
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/popper.js/popper.min.js"></script>
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/modernizr/css-scrollbars.js"></script>
+    <script type="text/javascript" src="/BackEndTemplate/assets/js/common-pages.js"></script>
+</body>
+</html>

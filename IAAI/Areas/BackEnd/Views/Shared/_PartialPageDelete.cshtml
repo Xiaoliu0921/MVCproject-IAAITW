@@ -1,0 +1,15 @@
+﻿
+@*@model MvcPaging.IPagedList<IAAI.Models.BaseEntity>*@
+
+@using (Html.BeginForm("Delete", ViewContext.RouteData.Values["controller"].ToString(), FormMethod.Post, new { id = "deleteForm" }))
+{
+    @Html.AntiForgeryToken()
+    @*@Html.Hidden("id", Model)*@
+    <div class="modal-body">
+        您確定要刪除此項目嗎？
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-danger">刪除</button>
+    </div>
+}

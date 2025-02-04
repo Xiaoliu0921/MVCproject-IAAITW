@@ -1,0 +1,29 @@
+﻿@model IEnumerable<IAAI.Models.CertifiedMember>
+
+<p><span style="color: #FFA500; font-size: 18px; font-size: 22px; ">國際會員</span></p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:700px;">
+    <thead>
+        <tr>
+            <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Picture</span></th>
+            <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">First name</span></th>
+            <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Last name</span></th>
+            <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">country</span></th>
+            <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Title</span></th>
+            <th scope="col" style="border-color: rgb(204, 0, 0); background-color: rgb(204, 0, 0);"><span style="color:#FFFFFF;">Company</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align: center; border-color: rgb(204, 0, 0);"><img alt="" src="@item.ImageUrl" style="width: 200px; height: 200px;"></td>
+                <td style="text-align: center; border-color: rgb(204, 0, 0);">@item.FirstName</td>
+                <td style="text-align: center; border-color: rgb(204, 0, 0);">@item.LastName</td>
+                <td style="text-align: center; border-color: rgb(204, 0, 0);">@item.Country</td>
+                <td style="text-align: center; border-color: rgb(204, 0, 0);">@item.Position</td>
+                <td style="text-align: center; border-color: rgb(204, 0, 0);">@item.Company</td>
+            </tr>
+        }
+    </tbody>
+</table>

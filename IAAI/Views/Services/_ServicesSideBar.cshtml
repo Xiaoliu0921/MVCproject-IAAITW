@@ -1,0 +1,24 @@
+﻿
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+    <div class="sidebar sidebar-right">
+        <div class="widget">
+            <h2 class="widget-title"><i class="fa fa-folder-open-o">&nbsp;</i>協會業務</h2>
+            <ul class="arrow nav nav-tabs nav-stacked">
+                <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                    <a href="@Url.Action("Index","Services")">協會業務</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Licenses" ? "active" : "")">
+                    <a href="@Url.Action("Licenses","Services")">訓練、認證、發照</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Refer" ? "active" : "")">
+                    <a href="@Url.Action("Refer","Services")">諮詢、顧問</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Survey" ? "active" : "")">
+                    <a href="@Url.Action("Survey","Services")">縱火調查</a>
+                </li>
+            </ul>
+        </div><!-- Categories end -->
+
+    </div><!-- Sidebar end -->
+</div><!-- Sidebar Col end -->

@@ -1,0 +1,328 @@
+﻿@model IAAI.Models.Member
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Account)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Model.Birthday.ToShortDateString()
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplyingMemberType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplyingMemberType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublicContactPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublicContactPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsInternationalMembership)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsInternationalMembership)
+        </dd>
+
+        @if (Model.IsInternationalMembership)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.MembershipCertificateUrl)
+            </dt>
+
+            <dd>
+                <a href="@Url.Content(Model.MembershipCertificateUrl) target=" _blank"">會員證影本</a>
+            </dd>
+        }
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HighestEducation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HighestEducation)
+        </dd>
+
+        <div style="border: 0.1px dashed gray; background-color: #F0F0F0">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceUnit1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceUnit1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceUnit1Position)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceUnit1Position)
+            </dd>
+
+            <dt>
+                服務單位1開始年月
+            </dt>
+
+            <dt>
+                @Model.ServiceUnit1StartYear 年 @Model.ServiceUnit1StartMonth 月
+            </dt>
+
+            <dt>
+                服務單位1結束年月
+            </dt>
+
+            <dt>
+                @Model.ServiceUnit1StartYear 年 @Model.ServiceUnit1StartMonth 月
+            </dt>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceUnit2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceUnit2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceUnit2Position)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceUnit2Position)
+            </dd>
+
+            <dt>
+                服務單位2開始年月
+            </dt>
+
+            <dt>
+                @Model.ServiceUnit2StartYear 年 @Model.ServiceUnit2StartMonth 月
+            </dt>
+
+            <dt>
+                服務單位2結束年月
+            </dt>
+
+            <dt>
+                @Model.ServiceUnit2StartYear 年 @Model.ServiceUnit2StartMonth 月
+            </dt>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceUnit3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceUnit3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceUnit3Position)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceUnit3Position)
+            </dd>
+
+            <dt>
+                服務單位3開始年月
+            </dt>
+
+            <dt>
+                @Model.ServiceUnit3StartYear 年 @Model.ServiceUnit3StartMonth 月
+            </dt>
+
+            <dt>
+                服務單位3結束年月
+            </dt>
+
+            <dt>
+                @Model.ServiceUnit3StartYear 年 @Model.ServiceUnit3StartMonth 月
+            </dt>
+        </div>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalExperienceYears)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalExperienceYears)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalExperienceMonths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalExperienceMonths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedTime)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group">
+    <a href="#" class="approval-link" data-id="@Model.Id" data-toggle="modal" data-target="#approvalModal">審核</a>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", new { page = ViewBag.page })
+</p>
+
+<div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="approvalModalLabel">確認審核</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @Html.Partial("~/Areas/BackEnd/Views/Members/_PartialPageApproval.cshtml")
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">錯誤</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @TempData["ErrorMessage"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $('.approval-link').on('click', function() {
+            var itemId = $(this).data('id');
+            approvalUrl = '@Url.Action("Approval", "Members", new { Area = "BackEnd" })?id=' + itemId;
+            @*approvalUrl = '@Url.Action("Approval", "Members")/' + itemId;*@
+            $('#approvalForm').attr('action', approvalUrl);
+        });
+
+        $(document).ready(function() {
+            var errorMessage = '@TempData["ErrorMessage"]';
+            if (errorMessage) {
+                $('#errorModal').modal('show');
+            }
+
+            $('.approval-link').on('click', function() {
+                var itemId = $(this).data('id');
+                @*var approvalUrl = '@Url.Action("Approval", "Members")/' + itemId;*@
+                var approvalUrl = '@Url.Action("Approval", "Members", new { Area = "BackEnd" })?id=' + itemId;
+                $('#approvalForm').attr('action', approvalUrl);
+            });
+        });
+    </script>
+}

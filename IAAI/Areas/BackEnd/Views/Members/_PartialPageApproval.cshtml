@@ -1,0 +1,14 @@
+﻿
+
+@using (Html.BeginForm("Approval", "Members", FormMethod.Post, new { id = "approvalForm", area = "BackEnd" }))
+{
+    @Html.AntiForgeryToken()
+    @*<input type="hidden" id="memberId" name="id" />*@
+    <div class="modal-body">
+        您確定要通過此帳號的審核嗎？
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-danger">確認</button>
+    </div>
+}

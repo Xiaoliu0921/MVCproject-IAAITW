@@ -1,0 +1,49 @@
+﻿@using MvcPaging
+@model IPagedList<IAAI.Models.News>
+@{
+}
+
+@foreach (var item in Model)
+{
+    <div class="post">
+        <div class="row">
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="post-media post-image">
+                    <a href="@Url.Action("Details","News",new { Id = item.Id })"><img alt="img" src="@item.ImageUrl" class="img-responsive"></a>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-12 col-xs-12">
+                <div class="post-body">
+                    <div class="entry-header">
+                        <span class="post-meta-date"><i class="fa fa fa-clock-o"></i> 2016-03-28</span>
+                        <h3 class="entry-title">
+                            <a href="@Url.Action("Details","News",new{Id=item.Id})">@item.Title</a>
+                        </h3>
+                        <p>@item.ShortContent</p>
+                    </div>
+                    <!-- header end -->
+                    <div class="post-footer">
+                        <a href="@Url.Action("Details","News",new{Id=item.Id})" class="btn btn-primary">more</a>
+                    </div>
+                </div>
+                <!-- post-body end -->
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="pager">
+    <ul class="pagination">
+        @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount)
+    </ul>
+</div>
+
+@section scripts{
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            alert("@TempData["ErrorMessage"]");
+        </script>
+    }
+}

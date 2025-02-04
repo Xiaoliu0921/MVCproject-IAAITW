@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IAAI.Models.Expert>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="ts-service-wrapper">
+                <div class="ts-service-image-wrapper">
+                    <span class="ts-service-image">
+                        <a href="@Url.Action("ExpertDetails", "About", new { id = item.Id })" title="@item.Name">
+                            <img class="img-responsive" src="@item.ImageUrl" alt="@item.Name">
+                        </a>
+                    </span>
+                </div>
+                <div class="ts-service-info">
+                    <h3>
+                        @*<a href="master_show.html">@item.Name</a>*@
+                        @Html.ActionLink(item.Name, "ExpertDetails", "About", new { id = item.Id },null)
+                    </h3>
+                    <p>現職：@item.CurrentPosition </p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

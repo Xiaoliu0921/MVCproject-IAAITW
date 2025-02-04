@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@functions {
+    public string GetSidebarPartialViewName()
+    {
+        var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+
+        // 根據 Controller 名稱返回對應的 Partial View 路徑
+        switch (controllerName)
+        {
+            case "About":
+                return "~/Views/About/_AboutSideBar.cshtml";
+            case "News":
+                return "~/Views/News/_NewsSideBar.cshtml";
+            case "Member":
+                if (Session["Login"] != null)
+                {
+                    return "~/Views/Member/_MemberSideBar2.cshtml";
+                }
+                else
+                {
+                    return "~/Views/Member/_MemberSideBar.cshtml";
+                }
+            case "Services":
+                return "~/Views/Services/_ServicesSideBar.cshtml";
+            case "Knowledge":
+                return "~/Views/Knowledge/_KnowledgeSideBar.cshtml";
+            case "Calendar":
+                return "~/Views/Calendar/_CalendarSideBar.cshtml";
+            case "Contact":
+                return "~/Views/Contact/_ContactSideBar.cshtml";
+            default:
+                return "~/Views/Shared/_DefaultSideBar.cshtml"; // 預設側邊欄
+        }
+    }
+}
+
+<div id="banner-area" class="banner-area" style="background-image: url('@Url.Content("/IAAITWHTML/Images/banner-bg.jpg")')">
+    <!-- Subpage title start -->
+    <div class="banner-text text-right">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="breadcrumb">
+                        <li>首頁</li>
+                        <li>@ViewBag.RouteName</li>
+                        <li><a href="#"> @ViewBag.SubRouteName</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- Subpage title end -->
+</div><!-- Banner area end -->
+<section id="main-container" class="main-container">
+    <div class="container">
+        <div class="row">
+            @Html.Partial(GetSidebarPartialViewName())
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <h2 class="page-title">@ViewBag.SubRouteName</h2>
+                <hr class="botmargin-min">
+                <!-- 內容開始 -->
+                @RenderBody()
+                <!-- 內容結束 -->
+            </div>
+        </div>
+    </div>
+</section>
+
+@RenderSection("scripts", required: false)

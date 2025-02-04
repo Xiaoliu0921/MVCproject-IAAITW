@@ -1,0 +1,51 @@
+﻿@model IAAI.Models.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Member", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label class="col-sm-2 control-label">帳　號：</label>
+        <div class="col-sm-8">
+            @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "Account" })
+        </div>
+        <div class="col-sm-2">
+            @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">密　碼：</label>
+        <div class="col-sm-8">
+            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Password" })
+        </div>
+        <div class="col-sm-2">
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <span style="color:red;">@ViewBag.message</span>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary solid blank" type="submit">登 入</button>
+        </div>
+    </div>
+    <hr>
+    <div class="text-left">
+        <a href="@Url.Action("Register","Member")">註冊帳號</a>
+    </div>
+}
+
+
+@section scripts{
+    @if (TempData["AlertMessage"] != null)
+    {
+        <script>
+            var message = `@Html.Raw(TempData["AlertMessage"].ToString().Replace("\n", "\\n"))`;
+            alert(message);
+        </script>
+    }
+
+}

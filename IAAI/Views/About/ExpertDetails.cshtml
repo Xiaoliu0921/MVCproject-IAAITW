@@ -1,0 +1,135 @@
+﻿@model IAAI.Models.Expert
+
+@{ int i = 1;}
+
+<div class="ts-service-wrapper">
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="ts-service-image-wrapper">
+            <span class="ts-service-image">
+                <img class="img-responsive" style="width:450px;height:450px;" src="@Model.ImageUrl" alt="@Model.Name">
+            </span>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="ts-service-info">
+            <p></p><h3>@Model.Name</h3><p></p>
+            <p><span>現職：</span>@Model.CurrentPosition </p>
+            <p><span>學歷：</span>@Model.Education.Replace(",,,", "、") </p>
+            <p>
+                <span>基本介紹：</span>
+                @if (!string.IsNullOrEmpty(Model.Introduction))
+                {
+                    i = 1;
+                    foreach (var item in Model.Introduction.Split(new string[] { ",,," }, StringSplitOptions.None))
+                    {
+                        <br />
+                        @($"{i}. {item.ToString()}")
+                        i++;
+                    }
+                }
+
+            </p>
+            <p>
+                <span>經歷：</span>
+                @if (!string.IsNullOrEmpty(Model.Experience))
+                {
+                    i = 1;
+                    foreach (var item in Model.Experience.Split(new string[] { ",,," }, StringSplitOptions.None))
+                    {
+                        <br />
+                        @($"{i}. {item.ToString()}")
+                        i++;
+                    }
+                }
+            </p>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="ts-service-info">
+            <p>
+            </p><h3>專長：</h3> @Model.Expertise.Replace(",,,", "、") <p></p>
+            <p>
+            </p><h3>鑑定實務經驗：</h3>
+            @if (!string.IsNullOrEmpty(Model.AppraisalExperience))
+            {
+            i = 1;
+            foreach (var item in Model.AppraisalExperience.Split(new string[] { ",,," }, StringSplitOptions.None))
+            {
+            @($"{i}. {item.ToString()}")
+            i++;
+            <br />
+            }
+            }
+            <p></p>
+            <h3>相關研究：</h3>
+            <span>學術著作：</span>
+            @if (!string.IsNullOrEmpty(Model.AcademicPublications))
+            {
+            i = 1;
+            foreach (var item in Model.AcademicPublications.Split(new string[] { ",,," }, StringSplitOptions.None))
+            {
+            <br />
+            @($"{i}. {item.ToString()}")
+            i++;
+            }
+            }
+            <br> <span>研究計畫：</span>
+            @if (!string.IsNullOrEmpty(Model.ResearchProjects))
+            {
+            i = 1;
+            foreach (var item in Model.ResearchProjects.Split(new string[] { ",,," }, StringSplitOptions.None))
+            {
+            <br />
+            @($"{i}. {item.ToString()}")
+            i++;
+            }
+            }
+            <p></p>
+            <p>
+            </p><h3>訓練或資格認證：</h3>
+            @if (!string.IsNullOrEmpty(Model.TrainingOrCertifications))
+            {
+            i = 1;
+            foreach (var item in Model.TrainingOrCertifications.Split(new string[] { ",,," }, StringSplitOptions.None))
+            {
+            @($"{i}. {item.ToString()}")
+            i++;
+            <br />
+            }
+            }
+            <p></p>
+            <h3>經歷：</h3>
+            @if (!string.IsNullOrEmpty(Model.DetailedExperience))
+            {
+            foreach (var item in Model.DetailedExperience.Split(new string[] { ",,," }, StringSplitOptions.None))
+            {
+            @item.ToString()
+            <br />
+            }
+            }
+            <p></p>
+            <p>
+            </p><h3>兼任公部門：</h3>
+            @if (!string.IsNullOrEmpty(Model.ConcurrentPublicSector))
+            {
+            foreach (var item in Model.ConcurrentPublicSector.Split(new string[] { ",,," }, StringSplitOptions.None))
+            {
+            @item.ToString()
+            <br />
+            }
+            }
+            <p></p>
+            <p>
+            </p><h3>兼任法人機構：</h3>
+            @if (!string.IsNullOrEmpty(Model.ConcurrentLegalAgency))
+            {
+            foreach (var item in Model.ConcurrentLegalAgency.Split(new string[] { ",,," }, StringSplitOptions.None))
+            {
+            @item.ToString()
+            <br />
+            }
+            }
+            <p></p>
+        </div>
+    </div>
+</div>

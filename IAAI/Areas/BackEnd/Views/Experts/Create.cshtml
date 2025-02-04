@@ -1,0 +1,233 @@
+﻿@model IAAI.Models.Expert
+
+
+@using (Html.BeginForm("Create", "Experts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <span style="color: red; position: absolute; left: 25px;">*</span>
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span style="color: red; position: absolute; left: 25px;">*</span>
+        @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="UploadImage" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span style="color: red; position: absolute; left: 25px;">*</span>
+        @Html.LabelFor(model => model.CurrentPosition, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CurrentPosition, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CurrentPosition, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Education, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Education" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Education" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="Education" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Introduction" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="Introduction" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Experience, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Experience" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Experience" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Experience" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="Experience" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Expertise, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Expertise" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Expertise" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="Expertise" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="Expertise" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AppraisalExperience, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="AppraisalExperience" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="AppraisalExperience" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="AppraisalExperience" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="AppraisalExperience" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AcademicPublications, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="AcademicPublications" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="AcademicPublications" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="AcademicPublications" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="AcademicPublications" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ResearchProjects, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="ResearchProjects" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="ResearchProjects" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="ResearchProjects" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="ResearchProjects" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TrainingOrCertifications, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="TrainingOrCertifications" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="TrainingOrCertifications" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="TrainingOrCertifications" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="TrainingOrCertifications" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DetailedExperience, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="DetailedExperience" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="DetailedExperience" type="text" style="width:80%;">
+            </div>
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="DetailedExperience" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="DetailedExperience" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConcurrentPublicSector, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="ConcurrentPublicSector" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="ConcurrentPublicSector" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConcurrentLegalAgency, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="d-flex">
+                <input class="form-control text-box m-b-10" name="ConcurrentLegalAgency" type="text" style="width:80%;">
+            </div>
+            <button type="button"  class="btn addRow" data-name="ConcurrentLegalAgency" style="height:35px;margin-bottom:15px;">新增列</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { page = ViewBag.page })
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            // 動態新增輸入列
+            $(".addRow").click(function () {
+                const fieldName = $(this).data("name"); // 取得對應的欄位名稱
+                const newInput = `
+                    <div class="d-flex">
+                        <input class="form-control text-box m-b-10" name="${fieldName}" type="text" style="width:80%;" />
+                        <button type="button" class="btn btn-danger removeInput" style="height:35px;margin-left:10px;">移除</button>
+                    </div>`;
+                $(this).before(newInput); // 新增輸入框到按鈕前
+            });
+
+
+
+
+            // 使用事件委派移除列
+            $(document).on("click", ".removeInput", function () {
+                $(this).parent().remove(); // 移除父層 <div class="d-flex">
+            });
+        });
+    </script>
+}

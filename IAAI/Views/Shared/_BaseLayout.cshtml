@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    @{ 
+        var subRouteName = string.IsNullOrEmpty(ViewBag.subRouteName) ? "" : $"-{ViewBag.subRouteName}";
+    }
+    <title>國際縱火調查人員協會臺灣分會 @subRouteName</title>
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="~/IAAITWHTML/images/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS
+    ================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/IAAITWHTML/css/bootstrap.min.css">
+    <!-- Template styles-->
+    <link rel="stylesheet" href="~/IAAITWHTML/css/style.css">
+    <!-- Responsive styles-->
+    <link rel="stylesheet" href="~/IAAITWHTML/css/responsive.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="~/IAAITWHTML/css/font-awesome.min.css">
+    <!-- Animation -->
+    <link rel="stylesheet" href="~/IAAITWHTML/css/animate.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/IAAITWHTML/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/IAAITWHTML/css/owl.theme.css">
+    <!-- Colorbox -->
+    <link rel="stylesheet" href="~/IAAITWHTML/css/colorbox.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="body-inner">
+        <!-- Header start -->
+        <header id="header" class="header-solid">
+            <div class="container">
+                <div class="row">
+                    <div class="logo col-md-6 col-sm-7 col-xs-12 ">
+                        <a href="@Url.Action("Index","Home")">
+                            <img src="~/IAAITWHTML/images/logo.png" alt="國際縱火調查人員協會臺灣分會" title="國際縱火調查人員協會臺灣分會">
+                        </a>
+                    </div><!-- logo end -->
+
+                    <div class="col-md-6 col-sm-5 col-xs-12 header-right hidden-xs">
+
+                        <ul class="top-info">
+                            <li>
+                                <div class="info-box">
+                                    <a href="https://www.facebook.com/pages/%E5%9C%8B%E9%9A%9B%E7%B8%B1%E7%81%AB%E8%AA%BF%E6%9F%A5%E4%BA%BA%E5%93%A1%E5%8D%94%E6%9C%83%E8%87%BA%E5%8F%B0%E7%81%A3%E5%88%86%E6%9C%83/469105899835805" title="粉絲專頁" target="_blank">
+                                        <i class="fa fa-facebook">&nbsp;</i>
+                                        <div class="info-box-content">
+                                            <p class="info-box-title">粉絲專頁</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="info-box">
+                                    <a href="english/" title="English">
+                                        <i class="fa fa-globe">&nbsp;</i>
+                                        <div class="info-box-content">
+                                            <p class="info-box-title">English</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- header right end -->
+                </div><!-- Row end -->
+            </div><!-- Container end -->
+        </header><!--/ Header end -->
+
+        <nav class="site-navigation navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="site-nav-inner">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+
+                            <div class="collapse navbar-collapse navbar-responsive-collapse">
+
+
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown @(ViewContext.RouteData.Values["controller"].ToString() == "About" ? "active" : "")">
+                                        <a href="@Url.Action("Index","About")" class="dropdown-toggle" data-toggle="dropdown" title="關於我們">關於我們 <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "About"&&ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                                <a href="@Url.Action("Index","About")">協會介紹</a>
+                                            </li>
+                                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Organization" ? "active" : "")">
+                                                <a href="@Url.Action("Organization","About")">組織架構</a>
+                                            </li>
+                                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "History" ? "active" : "")">
+                                                <a href="@Url.Action("History","About")">沿革</a>
+                                            </li>
+                                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Member" ? "active" : "")">
+                                                <a href="@Url.Action("Member","About")">配證會員</a>
+                                            </li>
+                                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Expert" ? "active" : "")">
+                                                <a href="@Url.Action("Expert","About")">專家介紹</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown @(ViewContext.RouteData.Values["controller"].ToString() == "News" ? "active" : "")">
+                                        <a href="@Url.Action("Index","News")" class="dropdown-toggle" data-toggle="dropdown" title="訊息發佈">訊息發佈 <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "News"&&ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                                <a href="@Url.Action("Index","News")">最新消息</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown @(ViewContext.RouteData.Values["controller"].ToString() == "Member" ? "active" : "")">
+                                        <a href="@Url.Action("Index","Member")" class="dropdown-toggle" data-toggle="dropdown" title="會員專區">會員專區 <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Member"&&ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                                <a href="@Url.Action("Index","Member")">討論區</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown @(ViewContext.RouteData.Values["controller"].ToString() == "Services" ? "active" : "")">
+                                        <a href="@Url.Action("Index","Services")" class="dropdown-toggle" data-toggle="dropdown" title="協會業務">協會業務 <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Services"&&ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                                <a href="@Url.Action("Index","Services")">協會業務</a>
+                                            </li>
+                                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Licenses" ? "active" : "")">
+                                                <a href="@Url.Action("Licenses","Services")">訓練、認證、發照</a>
+                                            </li>
+                                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Refer" ? "active" : "")">
+                                                <a href="@Url.Action("Refer","Services")">諮詢、顧問</a>
+                                            </li>
+                                            <li class="@(ViewContext.RouteData.Values["action"].ToString() == "Survey" ? "active" : "")">
+                                                <a href="@Url.Action("Survey","Services")">縱火調查</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown @(ViewContext.RouteData.Values["controller"].ToString() == "Knowledge" ? "active" : "")">
+                                        <a href="@Url.Action("Index","Knowledge")" class="dropdown-toggle" data-toggle="dropdown" title="知識庫">知識庫 <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Knowledge"&&ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                                <a href="@Url.Action("Index","Knowledge")">知識庫下載</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown @(ViewContext.RouteData.Values["controller"].ToString() == "Calendar" ? "active" : "")">
+                                        <a href="@Url.Action("Index","Calendar")" class="dropdown-toggle" data-toggle="dropdown" title="行事曆">行事曆 <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Calendar"&&ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                                <a href="@Url.Action("Index","Calendar")">協會行事曆</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown @(ViewContext.RouteData.Values["controller"].ToString() == "Contact" ? "active" : "")">
+                                        <a href="@Url.Action("Index","Contact")" class="dropdown-toggle" data-toggle="dropdown" title="聯絡我們">聯絡我們 <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li class="@(ViewContext.RouteData.Values["controller"].ToString() == "Contact"&&ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                                                <a href="@Url.Action("Index","Contact")">聯絡我們</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul><!--/ Nav ul end -->
+
+                            </div><!--/ Collapse end -->
+
+                        </div><!-- Site Navbar inner end -->
+
+
+                    </div><!--/ Col end -->
+                </div><!--/ Row end -->
+            </div><!--/ Container end -->
+
+        </nav><!--/ Navigation end -->
+
+        @RenderBody()
+
+        <!-- Footer start -->
+        <footer id="footer" class="footer">
+            <div class="container">
+
+                <div class="row copyright">
+                    <div class="col-xs-12 col-sm-7">
+                        <div class="copyright-info">
+                            <span>
+                                國際縱火調查人員協會臺灣分會版權所有<br>
+                                Copyright © 2016 International Association of Arson Investigators Taiwan Chapter. All Rights Reserved.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4 col-md-push-1">
+
+                        <div class="footer-menu">
+                            <a class="btn btn-dark" href="#" title="財產權宣告">財產權宣告</a>
+                        </div>
+                    </div>
+                </div><!-- Copyright end -->
+
+                <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top affix">
+                    <button class="btn btn-primary" title="Back to Top">
+                        <i class="fa fa-angle-double-up"></i>
+                    </button>
+                </div>
+
+            </div><!--/ Container end -->
+        </footer><!-- Footer end -->
+        <!-- Javascript Files
+    ================================================== -->
+        <!-- initialize jQuery Library -->
+        <script type="text/javascript" src="~/IAAITWHTML/js/jquery.js"></script>
+        <!-- Bootstrap jQuery -->
+        <script type="text/javascript" src="~/IAAITWHTML/js/bootstrap.min.js"></script>
+        <!-- Owl Carousel -->
+        <script type="text/javascript" src="~/IAAITWHTML/js/owl.carousel.min.js"></script>
+        <!-- Counter -->
+        <script type="text/javascript" src="~/IAAITWHTML/js/jquery.counterup.min.js"></script>
+        <!-- Waypoints -->
+        <script type="text/javascript" src="~/IAAITWHTML/js/waypoints.min.js"></script>
+        <!-- Color box -->
+        <script type="text/javascript" src="~/IAAITWHTML/js/jquery.colorbox.js"></script>
+        <!-- Isotope -->
+        <script type="text/javascript" src="~/IAAITWHTML/js/isotope.js"></script>
+        <script type="text/javascript" src="~/IAAITWHTML/js/ini.isotope.js"></script>
+        <!-- Google Map API Key Source -->
+        <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <!-- For Google Map -->
+        <!-- Doc http://www.mkyong.com/google-maps/google-maps-api-hello-world-example/ -->
+        <script type="text/javascript" src="js/gmap3.min.js"></script>
+        <!-- Template custom -->
+        <script type="text/javascript" src="js/custom.js"></script>
+
+        @*<script>
+            $(document).ready(function () {
+                var subRouteName = @ViewBag.subRouteName.toString();
+                if (subRouteName!='') {
+                    document.title += subRouteName;
+                }
+            });
+        </script>*@
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
