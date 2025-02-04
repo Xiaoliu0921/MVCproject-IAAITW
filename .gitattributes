@@ -8,3 +8,6 @@
 *.ts linguist-vendored
 *.css linguist-vendored
 *.html linguist-vendored
+
+# 忽略 Razor View (cshtml)
+*.cshtml linguist-vendored
